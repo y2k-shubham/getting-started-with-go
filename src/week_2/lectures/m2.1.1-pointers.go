@@ -1,6 +1,7 @@
 package lectures
 
 import "fmt"
+import com "../commons"
 
 func PointersDemo() {
 	var x = 1
@@ -17,25 +18,14 @@ func PointersDemo() {
 
 func PointersNewDemo() {
 	ptr := new(int)
-	fmt.Println("----------\nbefore init")
-	fmt.Printf("*ptr = %s\n", getPtrStr(ptr, "ptr"))
-	fmt.Println("----------\nafter init")
-	fmt.Printf("*ptr = %s\n", getPtrStr(ptr, "ptr"))
+	com.ShowSep("before init")
+	fmt.Printf("%s\n", com.GetPtrStr(ptr, "ptr"))
+	com.ShowSep("after init")
+	fmt.Printf("%s\n", com.GetPtrStr(ptr, "ptr"))
 }
 
 func showAll(when string, x int, y int, ip *int) {
-	fmt.Println("-----------")
-	fmt.Println(when)
-	fmt.Printf("x = %d\ny = %d\nip = %p\n*ip = %s\n", x, y, ip, getPtrStr(ip, "ip"))
-	fmt.Println("-----------")
-}
-
-func getPtrStr(ptr *int, ptrName string) string {
-	var ptrStr string
-	if ptr == nil {
-		ptrStr = "nil"
-	} else {
-		ptrStr = fmt.Sprintf("%d", *ptr)
-	}
-	return ptrStr
+	com.ShowSep(when)
+	fmt.Printf("x = %d\ny = %d\n%s\n", x, y, com.GetPtrStr(ip, "ip"))
+	com.ShowSep("")
 }
